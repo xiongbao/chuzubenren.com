@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>出租</title>
+<meta name=keywords content="">
+<meta name=description content="">
+<style>
+@font-face {
+  font-family: 'Pixel';
+  src: url('assets/fonts/fangzheng.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+html,body {
+	margin: 0;
+	height: 100%;
+	background-color: #fff;
+}
+
+body {
+	font-family: -apple-system,sans-serif;
+	background-image: url(assets/img/bg.jpg);
+	background-size: cover;
+	background-position: 50% 50%;
+	display: flex;
+	color: #03081a;
+	-webkit-user-select: none;
+	user-select: none;
+
+}
+.wrap,.inner {
+	display: flex;
+	flex:1;
+	flex-direction: column;
+}
+.wrap {
+	padding: 40px 20px 30px;
+	max-width: 500px;
+	margin: 0 auto;
+}
+.inner {
+	position: relative;
+	z-index: 1;
+}
+.inner::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border-width:  84px 6px 120px;
+	border-style: solid;
+	border-image-source: url(assets/img/border-image.png);
+	border-image-slice: 168 12 240 12;
+	border-image-repeat: round repeat;
+	background-color: #fff;
+	background-clip: content-box;
+	filter: drop-shadow(0 2px 12px rgba(170,170,170,.35));
+	z-index: -1;
+}
+.head {
+	height: 74px;
+	padding: 5px 20px 0;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.head::after {
+	content: '';
+	position: absolute;
+	left: 20px;
+	right: 20px;
+	bottom: 0;
+	border-bottom: 1px dashed #d5d6de;
+}
+.head * {
+	margin: 0;
+}
+.head p {
+	font-size: 12px;
+	letter-spacing: 1px;
+	color: #878b99;
+}
+.main {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	padding: 10px 20px 20px;
+}
+.menu-item {
+	display: flex;
+	align-items: center;
+	font-family: "Pixel";
+	padding: 10px 0;
+}
+.menu-item .menu-name {
+	font-weight: normal;
+	margin: 0;
+	letter-spacing: 1px;
+}
+.menu-item .menu-price {
+	margin: 0 0 0 auto;
+}
+.menu-price .num {
+	font-weight: 600;
+	font-size: 20px;
+}
+.slogan {
+	margin: 30px 0 0;
+	display: flex;
+	justify-content: space-between;
+	font-size: 24px;
+}
+.terms {
+	margin-top: auto;
+	color: #878b99;
+}
+.terms h4 {
+	margin: 0;
+}
+.terms p {
+	font-size: 12px;
+	margin: 7px 0 0;
+}
+.foot {
+	display: flex;
+	align-items: center;
+	padding: 0 20px 5px;
+	position: relative;
+	height: 108px;
+}
+.foot::before {
+	content: '';
+	position: absolute;
+	left: 20px;
+	right: 20px;
+	top: 0;
+	border-top: 1px dashed #d5d6de;
+}
+.store-img {
+	width:80px;
+	height:80px;
+	margin-right: 20px;
+}
+.store-info {
+
+}
+.store-info h3 {
+	margin: 0;
+}
+.store-info p {
+	margin: 5px 0 0;
+	font-size: 12px;
+	color: #878b99;
+}
+footer {
+	padding:10px 0;
+	text-align: center;
+	font-size: 12px;
+	color: rgba(0,0,0,.25);
+	letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+	<mainer class="inner">
+		<div class="head">
+			<h1>出租本人</h1>
+			<p>最近手头紧，法定假期出租本人</p>
+		</div>
+		<div class="main">
+			<div class="menu-item">
+				<h3 class="menu-name">陪吃饭</h3>
+				<p class="menu-price">
+					<span class="num">20</span>
+					<span class="unit">&yen;</span>
+				</p>
+			</div>
+			<div class="menu-item">
+				<h3 class="menu-name">陪喝酒</h3>
+				<p class="menu-price">
+					<span class="num">20</span>
+					<span class="unit">&yen;</span>
+				</p>
+			</div>
+			<div class="menu-item">
+				<h3 class="menu-name">陪逛街</h3>
+				<p class="menu-price">
+					<span class="num">20</span>
+					<span class="unit">&yen;</span>
+				</p>
+			</div>
+			<div class="menu-item">
+				<h3 class="menu-name">陪看电影</h3>
+				<p class="menu-price">
+					<span class="num">20</span>
+					<span class="unit">&yen;</span>
+				</p>
+			</div>
+			<div class="menu-item">
+				<h3 class="menu-name">当电灯泡</h3>
+				<p class="menu-price">
+					<span class="num">20</span>
+					<span class="unit">&yen;</span>
+				</p>
+			</div>
+			<div class="menu-item">
+				<h3 class="menu-name">陪见家长</h3>
+				<p class="menu-price">
+					<span class="num">50</span>
+					<span class="unit">&yen;</span>
+				</p>
+			</div>
+			<div class="menu-item">
+				<h3 class="menu-name">陪过夜</h3>
+				<p class="menu-price">
+					<span class="num">400</span>
+					<span class="unit">&yen;</span>
+				</p>
+			</div>
+			<div class="terms">
+				<h4>合法经营，诚信为本；非诚勿扰，谢谢合作。</h4>
+				<p>以上交易，限于当天，杜绝一切特殊要求及服务。事后不可以任何借口与当事人纠缠不清；更不可擅自与当事人发生感情纠葛。此次活动最终解释权归本人所有。
+				</p>
+			</div>
+			<!-- <div class="slogan">
+				<span class="item">诚信经营</span>
+				<span class="item">概不赊账</span>
+			</div>
+			<div class="slogan">
+				<span class="item">小本经营</span>
+				<span class="item">概无发票</span>
+			</div> -->
+		</div>
+		<div class="foot">
+			<img class="store-img" src="assets/img/store-code.jpg" alt="微信小商店二维码">
+			<div class="store-info">
+				<h3>出售本人</h3>
+				<p>请长按小商店小程序码了解更多</p>
+			</div>
+		</div>
+	</mainer>
+	<footer>&copy; 2020 CHUZUBENREN.COM</footer>
+</div>
+</body>
+</html>

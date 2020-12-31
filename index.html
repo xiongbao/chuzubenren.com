@@ -1,10 +1,18 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>出租</title>
+
+{{ $Domain := .Truncate .Host 3 }}
+{{ $SiteName := "" }}
+{{ if eq $Domain "ben"  }}
+	{{ $SiteName = "本人出租" }}
+{{ else }}
+	{{ $SiteName = "出租本人" }}
+{{ end }}
+
+<title>{{ $SiteName }}</title>
 <meta name=keywords content="">
 <meta name=description content="">
 <style>
@@ -16,8 +24,15 @@
 }
 html,body {
 	margin: 0;
+	width: 100%;
 	height: 100%;
-	background-color: #fff;
+	background-color: #eff3f6;
+	position: relative;
+	overflow: hidden;
+}
+html {
+	--frame-width: 380px;
+	--frame-height: 550px;
 }
 
 body {
@@ -25,73 +40,111 @@ body {
 	background-image: url(assets/img/bg.jpg);
 	background-size: cover;
 	background-position: 50% 50%;
-	display: flex;
+	background-repeat: no-repeat;
 	color: #03081a;
 	-webkit-user-select: none;
 	user-select: none;
-
 }
-.wrap,.inner {
-	display: flex;
-	flex:1;
-	flex-direction: column;
-}
-.wrap {
-	padding: 40px 20px 30px;
-	max-width: 500px;
-	margin: 0 auto;
-}
-.inner {
-	position: relative;
-	z-index: 1;
-}
-.inner::after {
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	border-width:  84px 6px 120px;
-	border-style: solid;
-	border-image-source: url(assets/img/border-image.png);
-	border-image-slice: 168 12 240 12;
-	border-image-repeat: round repeat;
-	background-color: #fff;
-	background-clip: content-box;
-	filter: drop-shadow(0 2px 12px rgba(170,170,170,.35));
-	z-index: -1;
-}
-.head {
-	height: 74px;
-	padding: 5px 20px 0;
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-.head::after {
-	content: '';
-	position: absolute;
-	left: 20px;
-	right: 20px;
-	bottom: 0;
-	border-bottom: 1px dashed #d5d6de;
-}
-.head * {
+h1,h2,h3,h4,p {
 	margin: 0;
 }
-.head p {
-	font-size: 12px;
-	letter-spacing: 1px;
-	color: #878b99;
+
+.wrap {
+	position: relative;
+	width: var(--frame-width);
+	margin: 0 auto;
+	top: 20%;
+	/* transform: translate(-50%,-50%); */
 }
-.main {
+.hand-back,
+.hand-front {
+	position: absolute;
+	left: 78%;
+	top: calc(100% - 210px);
+	width: calc( var(--frame-width) * 2.8);
+	height: calc( var(--frame-width) * 2.8 * .925 );
+	background-size: cover;
+}
+.hand-back {
+	z-index: 1;
+	background-image: url(assets/img/hand-back.png);
+	
+}
+.hand-front {
+	z-index: 3;
+	background-image: url(assets/img/hand-front.png);
+}
+.menu-frame {
+	position: relative;
+	z-index: 2;
+	height: var(--frame-height);
+	background-color: #fff;
+	transform: rotate(-15deg);
+}
+.menu-frame::after,
+.menu-frame::before {
+	content: '';
+	position: absolute;
+	left: 0;right: 0;
+	padding-top: 4.2%;
+	-webkit-mask-size: 100% auto;
+	-webkit-mask-repeat: no-repeat;
+	background-color: #fff;
+}
+.menu-frame::before {
+	bottom: 99.5%;
+	-webkit-mask-image: url(assets/img/border-t-mask.png);
+}
+.menu-frame::after {
+	top: 99.5%;
+	-webkit-mask-image: url(assets/img/border-b-mask.png);
+	-webkit-mask-position: 0 100%;
+}
+.menu-frame.mask,
+.menu-frame.mask::after,
+.menu-frame.mask::before {
+	background-color: #000;
+}
+.menu-frame.mask {
+	z-index: 0;
+	position: absolute;
+	left: 0;top: 0;
+	width: 100%;
+	filter: opacity(.05) blur(2px);
+	transform: rotate(-15deg) translate(-12%,12%);
+}
+.menu {
+	filter: drop-shadow(0 0 10px rgba(135,135,145,.18));
+}
+.menu .inner {
 	display: flex;
 	flex-direction: column;
-	flex: 1;
-	padding: 10px 20px 20px;
+	height: 100%;
+}
+.menu-head {
+	padding: 15px 20px 20px;
+	position: relative;
+}
+.menu-title {
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+}
+.menu-title::before {
+	content: '';
+	position: absolute;
+	left: -2px;
+	right: -2px;
+	bottom: 5px;
+	height: 10px;
+	background-color: #ffa3bc;
+	z-index: -1;
+}
+.menu-info {
+	color: #878b99;
+}
+.menu-list {
+	padding:10px 20px;
 }
 .menu-item {
 	display: flex;
@@ -99,60 +152,46 @@ body {
 	font-family: "Pixel";
 	padding: 10px 0;
 }
+.menu-item::after {
+	content: '';
+	display: block;
+	flex: 1;
+	border-top: 1px dotted #d5d6de;
+	order: 2;
+	margin: 0 20px;
+}
 .menu-item .menu-name {
 	font-weight: normal;
-	margin: 0;
+	order: 1;
 	letter-spacing: 1px;
 }
 .menu-item .menu-price {
-	margin: 0 0 0 auto;
+	order: 3;
 }
 .menu-price .num {
 	font-weight: 600;
 	font-size: 20px;
-}
-.slogan {
-	margin: 30px 0 0;
-	display: flex;
-	justify-content: space-between;
-	font-size: 24px;
-}
-.terms {
-	margin-top: auto;
-	color: #878b99;
-}
-.terms h4 {
-	margin: 0;
-}
-.terms p {
-	font-size: 12px;
-	margin: 7px 0 0;
-}
-.foot {
-	display: flex;
-	align-items: center;
-	padding: 0 20px 5px;
-	position: relative;
-	height: 108px;
-}
-.foot::before {
-	content: '';
-	position: absolute;
-	left: 20px;
-	right: 20px;
-	top: 0;
-	border-top: 1px dashed #d5d6de;
 }
 .store-img {
 	width:80px;
 	height:80px;
 	margin-right: 20px;
 }
-.store-info {
-
+.store {
+	display: flex;
+	align-items: center;
+	margin-top:auto;
+	padding: 20px;
+	position: relative;
 }
-.store-info h3 {
-	margin: 0;
+.store::before {
+	content: '';
+	position: absolute;
+	left: 20px;
+	right: 20px;
+	top: 0;
+	height: 4px;
+	background-color: #d5d6de;
 }
 .store-info p {
 	margin: 5px 0 0;
@@ -160,94 +199,109 @@ body {
 	color: #878b99;
 }
 footer {
-	padding:10px 0;
+	padding:20px 0;
 	text-align: center;
 	font-size: 12px;
 	color: rgba(0,0,0,.25);
 	letter-spacing: 1px;
+	position: absolute;
+	left: 0;right: 0;bottom: 0;
+	text-align: center;
+}
+@media screen and (max-width: 480px) {
+	html {
+		--frame-width: 90%;
+		--frame-height: 550px;
+	}
+	.wrap {
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	.menu-frame {
+		transform: rotate(0);
+	}
+	.menu-frame.mask {
+		display: none;
+	}
+	.hand-back,
+	.hand-front {
+		display: none;
+	}
 }
 </style>
 </head>
 <body>
 <div class="wrap">
-	<mainer class="inner">
-		<div class="head">
-			<h1>出租本人</h1>
-			<p>最近手头紧，法定假期出租本人</p>
-		</div>
-		<div class="main">
-			<div class="menu-item">
-				<h3 class="menu-name">陪吃饭</h3>
-				<p class="menu-price">
-					<span class="num">20</span>
-					<span class="unit">&yen;</span>
-				</p>
+	<div class="menu-frame menu">
+		<div class="inner">
+			<div class="menu-head">
+				<h1 class="menu-title">跨年夜价格清单</h1>
+				<p class="menu-info">{{$SiteName}}，让你每一天都不再寂寞</p>
 			</div>
-			<div class="menu-item">
-				<h3 class="menu-name">陪喝酒</h3>
-				<p class="menu-price">
-					<span class="num">20</span>
-					<span class="unit">&yen;</span>
-				</p>
-			</div>
-			<div class="menu-item">
-				<h3 class="menu-name">陪逛街</h3>
-				<p class="menu-price">
-					<span class="num">20</span>
-					<span class="unit">&yen;</span>
-				</p>
-			</div>
-			<div class="menu-item">
-				<h3 class="menu-name">陪看电影</h3>
-				<p class="menu-price">
-					<span class="num">20</span>
-					<span class="unit">&yen;</span>
-				</p>
-			</div>
-			<div class="menu-item">
-				<h3 class="menu-name">当电灯泡</h3>
-				<p class="menu-price">
-					<span class="num">20</span>
-					<span class="unit">&yen;</span>
-				</p>
-			</div>
-			<div class="menu-item">
-				<h3 class="menu-name">陪见家长</h3>
-				<p class="menu-price">
-					<span class="num">50</span>
-					<span class="unit">&yen;</span>
-				</p>
-			</div>
-			<div class="menu-item">
-				<h3 class="menu-name">陪过夜</h3>
-				<p class="menu-price">
-					<span class="num">400</span>
-					<span class="unit">&yen;</span>
-				</p>
-			</div>
-			<div class="terms">
-				<h4>合法经营，诚信为本；非诚勿扰，谢谢合作。</h4>
-				<p>以上交易，限于当天，杜绝一切特殊要求及服务。事后不可以任何借口与当事人纠缠不清；更不可擅自与当事人发生感情纠葛。此次活动最终解释权归本人所有。
-				</p>
-			</div>
-			<!-- <div class="slogan">
-				<span class="item">诚信经营</span>
-				<span class="item">概不赊账</span>
-			</div>
-			<div class="slogan">
-				<span class="item">小本经营</span>
-				<span class="item">概无发票</span>
-			</div> -->
-		</div>
-		<div class="foot">
-			<img class="store-img" src="assets/img/store-code.jpg" alt="微信小商店二维码">
-			<div class="store-info">
-				<h3>出售本人</h3>
-				<p>请长按小商店小程序码了解更多</p>
-			</div>
-		</div>
-	</mainer>
-	<footer>&copy; 2020 CHUZUBENREN.COM</footer>
+			<div class="menu-list">
+				<div class="menu-item">
+					<h3 class="menu-name">陪吃饭</h3>
+					<p class="menu-price">
+						<span class="num">20</span>
+						<span class="unit">&yen;</span>
+					</p>
+				</div>
+				<div class="menu-item">
+					<h3 class="menu-name">陪喝酒</h3>
+					<p class="menu-price">
+						<span class="num">20</span>
+						<span class="unit">&yen;</span>
+					</p>
+				</div>
+				<div class="menu-item">
+					<h3 class="menu-name">陪逛街</h3>
+					<p class="menu-price">
+						<span class="num">20</span>
+						<span class="unit">&yen;</span>
+					</p>
+				</div>
+				<div class="menu-item">
+					<h3 class="menu-name">陪看电影</h3>
+					<p class="menu-price">
+						<span class="num">20</span>
+						<span class="unit">&yen;</span>
+					</p>
+				</div>
+				<div class="menu-item">
+					<h3 class="menu-name">当电灯泡</h3>
+					<p class="menu-price">
+						<span class="num">20</span>
+						<span class="unit">&yen;</span>
+					</p>
+				</div>
+				<div class="menu-item">
+					<h3 class="menu-name">陪见家长</h3>
+					<p class="menu-price">
+						<span class="num">50</span>
+						<span class="unit">&yen;</span>
+					</p>
+				</div>
+				<div class="menu-item">
+					<h3 class="menu-name">陪过夜</h3>
+					<p class="menu-price">
+						<span class="num">400</span>
+						<span class="unit">&yen;</span>
+					</p>
+				</div>
+			</div><!-- / menu-list -->
+			<div class="store">
+				<img class="store-img" src="assets/img/store-code.jpg" alt="微信小商店二维码">
+				<div class="store-info">
+					<h3>出售本人</h3>
+					<p>请扫描小商店小程序码了解更多</p>
+				</div>
+			</div><!-- / store -->
+		</div><!-- / inner -->
+	</div>
+	<div class="menu-frame mask"></div>
+	<div class="hand-back"></div>
+	<div class="hand-front"></div>
 </div>
+<footer>&copy; 2020 {{.Host}}</footer>
 </body>
 </html>

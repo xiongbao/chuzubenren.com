@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-
+<link rel="icon" type="image/svg+xml" href="assets/img/icon.svg">
+<link rel="icon" type="image/svg+xml" sizes="144x144" href="assets/img/icon.svg">
+<link rel="apple-touch-icon" type="image/svg+xml" href="assets/img/icon.svg">
 {{ $Domain := .Truncate .Host 3 }}
 {{ $SiteName := "" }}
 {{ if eq $Domain "ben"  }}
@@ -235,12 +237,26 @@ footer {
 	<div class="menu-frame menu">
 		<div class="inner">
 			<div class="menu-head">
-				<h1 class="menu-title">跨年夜价格清单</h1>
-				<p class="menu-info">{{$SiteName}}，让你每一天都不再寂寞</p>
+				<h1 class="menu-title">春节{{$SiteName}}</h1>
+				<p class="menu-info">本人因年底缺钱，现承接以下业务</p>
 			</div>
 			<div class="menu-list">
 				<div class="menu-item">
-					<h3 class="menu-name">陪吃饭</h3>
+					<h3 class="menu-name">挂灯笼</h3>
+					<p class="menu-price">
+						<span class="num">20</span>
+						<span class="unit">&yen;</span>
+					</p>
+				</div>
+				<div class="menu-item">
+					<h3 class="menu-name">贴对联</h3>
+					<p class="menu-price">
+						<span class="num">20</span>
+						<span class="unit">&yen;</span>
+					</p>
+				</div>
+				<div class="menu-item">
+					<h3 class="menu-name">放鞭炮</h3>
 					<p class="menu-price">
 						<span class="num">20</span>
 						<span class="unit">&yen;</span>
@@ -254,35 +270,21 @@ footer {
 					</p>
 				</div>
 				<div class="menu-item">
-					<h3 class="menu-name">陪逛街</h3>
+					<h3 class="menu-name">陪走亲戚</h3>
 					<p class="menu-price">
 						<span class="num">20</span>
 						<span class="unit">&yen;</span>
 					</p>
 				</div>
 				<div class="menu-item">
-					<h3 class="menu-name">陪看电影</h3>
-					<p class="menu-price">
-						<span class="num">20</span>
-						<span class="unit">&yen;</span>
-					</p>
-				</div>
-				<div class="menu-item">
-					<h3 class="menu-name">当电灯泡</h3>
-					<p class="menu-price">
-						<span class="num">20</span>
-						<span class="unit">&yen;</span>
-					</p>
-				</div>
-				<div class="menu-item">
-					<h3 class="menu-name">陪见家长</h3>
+					<h3 class="menu-name">陪打麻将</h3>
 					<p class="menu-price">
 						<span class="num">50</span>
 						<span class="unit">&yen;</span>
 					</p>
 				</div>
 				<div class="menu-item">
-					<h3 class="menu-name">陪过夜</h3>
+					<h3 class="menu-name">同睡一张床</h3>
 					<p class="menu-price">
 						<span class="num">400</span>
 						<span class="unit">&yen;</span>
@@ -292,7 +294,7 @@ footer {
 			<div class="store">
 				<img class="store-img" src="assets/img/store-code.jpg" alt="微信小商店二维码">
 				<div class="store-info">
-					<h3>出售本人</h3>
+					<h3>本人出租</h3>
 					<p>请扫描小商店小程序码了解更多</p>
 				</div>
 			</div><!-- / store -->
@@ -302,6 +304,6 @@ footer {
 	<div class="hand-back"></div>
 	<div class="hand-front"></div>
 </div>
-<footer>&copy; 2020 {{.Host}}</footer>
+<footer>&copy;2020 - 2021 {{.ToUpper .Host}}</footer>
 </body>
 </html>

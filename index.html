@@ -294,7 +294,7 @@ footer {
 			<div class="store">
 				<img class="store-img" src="assets/img/store-code.jpg" alt="微信小商店二维码">
 				<div class="store-info">
-					<h3>本人出租</h3>
+					<h3>{{ $SiteName }}</h3>
 					<p>请扫描小商店小程序码了解更多</p>
 				</div>
 			</div><!-- / store -->
@@ -304,7 +304,7 @@ footer {
 	<div class="hand-back"></div>
 	<div class="hand-front"></div>
 </div>
-<footer>&copy;2020 - 2021 {{.ToUpper .Host}}</footer>
+<footer>&copy;2020 - {{.Now "2006"}} {{.ToUpper .Host}}</footer>
 <script>
 	var _hmt = _hmt || [];
 	(function() {

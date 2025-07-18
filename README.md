@@ -97,7 +97,7 @@
 ## 📁 项目结构
 
 ```
-holiday-product-system/
+chuzubenren.com/
 ├── app/                          # Next.js App Router
 │   ├── api/                      # API 路由
 │   │   └── holiday/              # 节假日 API
@@ -146,7 +146,7 @@ interface Holiday {
 
 ### 服务配置
 
-在 `config/products.config.ts` 中配置服务信息：
+在 `config/services.config.ts` 中配置服务信息：
 
 ```typescript
 interface Product {
@@ -217,7 +217,7 @@ npm start
 ```json
 {
   "holidays": [...],
-  "products": [...],
+  "services": [...],
   "status": "current" | "upcoming" | "default",
   "displayName": "节假日名称"
 }

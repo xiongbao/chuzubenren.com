@@ -63,28 +63,28 @@
 ### 安装步骤
 
 1. **克隆项目**
-   \`\`\`bash
+   ```bash
    git clone https://github.com/xiongbao/chuzubenren.com.git
    cd chuzubenren.com
-   \`\`\`
+   ```
 
 2. **安装依赖**
-   \`\`\`bash
+   ```bash
    npm install
    # 或
    yarn install
    # 或
    pnpm install
-   \`\`\`
+   ```
 
 3. **启动开发服务器**
-   \`\`\`bash
+   ```bash
    npm run dev
    # 或
    yarn dev
    # 或
    pnpm dev
-   \`\`\`
+   ```
 
 4. **访问应用**
    
@@ -96,7 +96,7 @@
 
 ## 📁 项目结构
 
-\`\`\`
+```
 holiday-product-system/
 ├── app/                          # Next.js App Router
 │   ├── api/                      # API 路由
@@ -124,15 +124,15 @@ holiday-product-system/
 ├── README.md                     # 项目文档
 ├── package.json                  # 项目配置
 └── vercel.json                   # Vercel 部署配置
-\`\`\`
+```
 
 ## ⚙️ 配置说明
 
 ### 节假日配置
 
-在 \`config/holidays.config.ts\` 中配置节假日信息：
+在 `config/holidays.config.ts` 中配置节假日信息：
 
-\`\`\`typescript
+```typescript
 interface Holiday {
   id: string                                // 节假日唯一标识
   name: string                              // 节假日名称
@@ -142,13 +142,13 @@ interface Holiday {
   priority?: number                         // 优先级
   advanceDays?: number                      // 提前展示天数
 }
-\`\`\`
+```
 
 ### 服务配置
 
-在 \`config/products.config.ts\` 中配置服务信息：
+在 `config/products.config.ts` 中配置服务信息：
 
-\`\`\`typescript
+```typescript
 interface Product {
   id: string              // 服务品唯一标识
   name: string            // 服务名称
@@ -157,7 +157,7 @@ interface Product {
   image?: string          // 服务图片
   holidayIds: string[]    // 关联的节假日ID
 }
-\`\`\`
+```
 
 ### 系统优先级
 
@@ -176,33 +176,33 @@ interface Product {
 ### 手动部署到 Vercel
 
 1. **安装 Vercel CLI**
-   \`\`\`bash
+   ```bash
    npm i -g vercel
-   \`\`\`
+   ```
 
 2. **登录 Vercel**
-   \`\`\`bash
+   ```bash
    vercel login
-   \`\`\`
+   ```
 
 3. **部署项目**
-   \`\`\`bash
+   ```bash
    vercel
-   \`\`\`
+   ```
 
 ### 其他部署平台
 
 #### Netlify
-\`\`\`bash
+```bash
 npm run build
 npm run export
-\`\`\`
+```
 
 #### 自托管
-\`\`\`bash
+```bash
 npm run build
 npm start
-\`\`\`
+```
 
 ## 📚 API 文档
 
@@ -211,22 +211,22 @@ npm start
 获取指定日期的节假日信息。
 
 **参数:**
-- \`date\` (可选): ISO 格式的日期字符串，默认为当前日期
+- `date` (可选): ISO 格式的日期字符串，默认为当前日期
 
 **响应:**
-\`\`\`json
+```json
 {
   "holidays": [...],
   "products": [...],
   "status": "current" | "upcoming" | "default",
   "displayName": "节假日名称"
 }
-\`\`\`
+```
 
 **示例:**
-\`\`\`bash
+```bash
 curl "https://your-domain.com/api/holiday?date=2024-02-14"
-\`\`\`
+```
 
 ## 🤝 贡献指南
 
@@ -235,9 +235,9 @@ curl "https://your-domain.com/api/holiday?date=2024-02-14"
 ### 贡献方式
 
 1. **Fork 项目**
-2. **创建功能分支** (\`git checkout -b feature/AmazingFeature\`)
-3. **提交更改** (\`git commit -m 'Add some AmazingFeature'\`)
-4. **推送到分支** (\`git push origin feature/AmazingFeature\`)
+2. **创建功能分支** (`git checkout -b feature/AmazingFeature`)
+3. **提交更改** (`git commit -m 'Add some AmazingFeature'`)
+4. **推送到分支** (`git push origin feature/AmazingFeature`)
 5. **创建 Pull Request**
 
 ### 开发规范
